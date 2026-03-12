@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrecisionWebGroup — Calgary SEO-First Web Design | From Invisible to Dominant</title>
+<meta name="description" content="PrecisionWebGroup builds professional websites with ongoing SEO content for Calgary businesses. Website plans from $50/mo. Stop being invisible on Google — start ranking today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & CUSTOM PROPERTIES
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0A2540;
+  --blue:#2F80ED;
+  --gray-light:#D1D5DB;
+  --gray-dark:#1F2937;
+  --green:#22C55E;
+  --navy-90:rgba(10,37,64,.92);
+  --blue-10:rgba(47,128,237,.1);
+  --blue-20:rgba(47,128,237,.2);
+  --blue-40:rgba(47,128,237,.4);
+  --glass:rgba(10,37,64,.85);
+  --white:#FFFFFF;
+  --off-white:#F8FAFC;
+  --font-head:'Sora',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 4px 24px rgba(10,37,64,.12);
+  --shadow-lg:0 12px 48px rgba(10,37,64,.18);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--gray-dark);line-height:1.7;background:var(--white);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{text-decoration:none;color:inherit;transition:color .25s var(--ease)}
+ul{list-style:none}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-head);line-height:1.15;font-weight:700}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
+
+/* ============================================================
+   ANIMATED GRADIENT
+   ============================================================ */
+@keyframes gradShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.grad-bg{
+  background:linear-gradient(135deg,var(--navy) 0%,#0e3057 25%,var(--blue) 50%,#0e3057 75%,var(--navy) 100%);
+  background-size:400% 400%;
+  animation:gradShift 14s ease infinite;
+}
+
+/* ============================================================
+   DIAGONAL DIVIDERS
+   ============================================================ */
+.diag-top{clip-path:polygon(0 48px,100% 0,100% 100%,0 100%)}
+.diag-bottom{clip-path:polygon(0 0,100% 0,100% calc(100% - 48px),0 100%)}
+.diag-both{clip-path:polygon(0 48px,100% 0,100% calc(100% - 48px),0 100%)}
+@media(min-width:768px){
+  .diag-top{clip-path:polygon(0 72px,100% 0,100% 100%,0 100%)}
+  .diag-bottom{clip-path:polygon(0 0,100% 0,100% calc(100% - 72px),0 100%)}
+  .diag-both{clip-path:polygon(0 72px,100% 0,100% calc(100% - 72px),0 100%)}
+}
+
+/* ============================================================
+   PULSING CTA
+   ============================================================ */
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(47,128,237,.5)}
+  50%{box-shadow:0 0 0 14px rgba(47,128,237,0)}
+}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-head);font-weight:700;font-size:.95rem;
+  padding:14px 32px;border-radius:50px;cursor:pointer;
+  transition:all .3s var(--ease);border:none;
+}
+.btn-primary{
+  background:var(--blue);color:var(--white);
+  animation:pulse 2.4s ease infinite;
+}
+.btn-primary:hover{background:#1a6dd4;transform:translateY(-2px)}
+.btn-ghost{
+  background:transparent;color:var(--white);
+  border:2px solid rgba(255,255,255,.4);
+}
+.btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+.btn-navy{background:var(--navy);color:var(--white)}
+.btn-navy:hover{background:#0d2f50;transform:translateY(-2px)}
+.btn-outline{
+  background:transparent;color:var(--blue);
+  border:2px solid var(--blue);
+}
+.btn-outline:hover{background:var(--blue);color:var(--white)}
+
+/* ============================================================
+   SECTION UTILITIES
+   ============================================================ */
+.section-tag{
+  display:inline-block;font-family:var(--font-head);font-weight:700;
+  font-size:.75rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--blue);margin-bottom:12px;
+}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px;color:var(--navy)}
+.section-sub{font-size:1.1rem;color:#475569;max-width:640px;margin:0 auto 48px}
+.text-center{text-align:center}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:16px 0;transition:all .35s var(--ease);
+}
+.nav.scrolled{
+  background:var(--navy-90);backdrop-filter:blur(12px);
+  padding:10px 0;box-shadow:0 2px 24px rgba(0,0,0,.2);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1200px;margin:0 auto;padding:0 24px;
+}
+@media(min-width:768px){.nav-inner{padding:0 40px}}
+.nav-logo{
+  font-family:var(--font-head);font-weight:800;font-size:1.15rem;color:var(--white);
+  display:flex;align-items:center;gap:8px;
+}
+.nav-logo .logo-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;background:var(--blue);border-radius:8px;
+  font-weight:800;font-size:.85rem;color:var(--white);
+}
+.nav-links{display:none;align-items:center;gap:28px;list-style:none}
+.nav-links a{
+  font-family:var(--font-body);font-weight:500;font-size:.9rem;
+  color:rgba(255,255,255,.8);transition:color .25s;
+}
+.nav-links a:hover{color:var(--white)}
+/* Dropdown */
+.dropdown{position:relative}
+.dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px}
+.dropdown-toggle::after{
+  content:'';display:inline-block;width:0;height:0;
+  border-left:4px solid transparent;border-right:4px solid transparent;
+  border-top:5px solid currentColor;transition:transform .25s;
+}
+.dropdown:hover .dropdown-toggle::after{transform:rotate(180deg)}
+.dropdown-menu{
+  position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);
+  background:var(--white);border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-lg);padding:8px 0;min-width:220px;
+  opacity:0;visibility:hidden;transition:all .25s var(--ease);
+  pointer-events:none;
+}
+.dropdown:hover .dropdown-menu{opacity:1;visibility:visible;pointer-events:all}
+.dropdown-menu a{
+  display:block;padding:10px 20px;color:var(--gray-dark);font-size:.88rem;
+  transition:background .2s,color .2s;
+}
+.dropdown-menu a:hover{background:var(--blue-10);color:var(--blue)}
+.nav-cta .btn{padding:10px 24px;font-size:.85rem}
+@media(min-width:960px){.nav-links{display:flex}}
+
+/* Mobile Menu */
+.nav-toggle{
+  display:flex;flex-direction:column;gap:5px;cursor:pointer;
+  background:none;border:none;padding:8px;
+}
+.nav-toggle span{
+  display:block;width:24px;height:2px;background:var(--white);
+  transition:all .3s;border-radius:2px;
+}
+.nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-toggle.active span:nth-child(2){opacity:0}
+.nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+@media(min-width:960px){.nav-toggle{display:none}}
+
+.mobile-menu{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:var(--navy);z-index:999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:24px;transform:translateX(100%);transition:transform .4s var(--ease);
+}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{
+  font-family:var(--font-head);font-size:1.2rem;color:var(--white);
+  font-weight:600;padding:8px 0;
+}
+.mobile-menu .btn{margin-top:16px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  color:var(--white);padding:120px 0 80px;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(to top,var(--white),transparent);z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr;gap:48px;align-items:center;
+  position:relative;z-index:2;
+}
+@media(min-width:960px){.hero-grid{grid-template-columns:1fr 1fr;gap:64px}}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;
+  margin-bottom:20px;
+}
+.hero h1 span{
+  display:inline;
+  background:linear-gradient(135deg,#60a5fa,var(--green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:1.15rem;line-height:1.7;color:rgba(255,255,255,.8);
+  margin-bottom:32px;max-width:520px;
+}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px}
+
+/* Growth Timeline */
+.growth-timeline{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);padding:36px 32px;backdrop-filter:blur(8px);
+}
+.growth-timeline h3{
+  font-size:.8rem;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:24px;
+}
+.timeline-track{position:relative;padding-left:32px}
+.timeline-track::before{
+  content:'';position:absolute;left:11px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(to bottom,var(--blue),var(--green));
+  border-radius:2px;
+}
+.milestone{
+  position:relative;padding:12px 0;display:flex;align-items:center;gap:16px;
+  opacity:0;transform:translateX(-20px);
+  transition:all .6s var(--ease);
+}
+.milestone.animated{opacity:1;transform:translateX(0)}
+.milestone-dot{
+  position:absolute;left:-32px;width:22px;height:22px;
+  border-radius:50%;border:3px solid var(--blue);background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .4s;flex-shrink:0;
+}
+.milestone.green .milestone-dot{border-color:var(--green);box-shadow:0 0 12px rgba(34,197,94,.4)}
+.milestone-label{font-size:.88rem;color:rgba(255,255,255,.6);min-width:70px}
+.milestone-bar{
+  flex:1;height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;
+}
+.milestone-fill{
+  height:100%;border-radius:4px;width:0;
+  transition:width 1.2s var(--ease);
+}
+.milestone:nth-child(1) .milestone-fill{background:var(--blue)}
+.milestone:nth-child(2) .milestone-fill{background:#3b8ff0}
+.milestone:nth-child(3) .milestone-fill{background:#50b060}
+.milestone:nth-child(4) .milestone-fill{background:var(--green)}
+.milestone-num{
+  font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--white);
+  min-width:40px;text-align:right;
+}
+
+/* ============================================================
+   GROWTH PHASES
+   ============================================================ */
+.phases{padding:100px 0 80px;background:var(--off-white)}
+.phases-grid{
+  display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;
+  margin-bottom:48px;
+}
+@media(min-width:768px){
+  .phases-grid{grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:center}
+}
+.phase-card{
+  text-align:center;padding:40px 28px;border-radius:var(--radius);
+  background:var(--white);box-shadow:var(--shadow);
+  transition:transform .3s,box-shadow .3s;
+}
+.phase-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.phase-card.dimmed{opacity:.65}
+.phase-card.dimmed:hover{opacity:1}
+.phase-card.highlighted{border:2px solid var(--blue);position:relative}
+.phase-card.green-hl{border:2px solid var(--green)}
+.phase-icon{
+  width:64px;height:64px;border-radius:50%;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+}
+.phase-card.dimmed .phase-icon{background:var(--gray-light);color:var(--gray-dark)}
+.phase-card.highlighted .phase-icon{background:var(--blue-20);color:var(--blue)}
+.phase-card.green-hl .phase-icon{background:rgba(34,197,94,.15);color:var(--green)}
+.phase-card h3{font-size:1.1rem;margin-bottom:6px}
+.phase-card .phase-label{
+  font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;margin-bottom:12px;
+}
+.phase-card.dimmed .phase-label{color:#94a3b8}
+.phase-card.highlighted .phase-label{color:var(--blue)}
+.phase-card.green-hl .phase-label{color:var(--green)}
+.phase-card p{font-size:.9rem;color:#64748b;line-height:1.6}
+.phase-arrow{
+  display:none;font-size:1.8rem;color:var(--gray-light);
+  padding:0 8px;
+}
+@media(min-width:768px){.phase-arrow{display:block}}
+
+/* ============================================================
+   SOCIAL PROOF TICKER
+   ============================================================ */
+.ticker-section{
+  padding:48px 0;background:var(--navy);color:var(--white);overflow:hidden;
+}
+@keyframes tickerScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.ticker-track{
+  display:flex;gap:64px;white-space:nowrap;
+  animation:tickerScroll 28s linear infinite;
+  width:max-content;
+}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--font-head);font-size:.95rem;font-weight:600;
+  color:rgba(255,255,255,.85);
+}
+.ticker-item .tick-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;
+}
+/* Testimonials */
+.testimonials{padding:64px 0 0}
+.testimonial-grid{
+  display:grid;grid-template-columns:1fr;gap:24px;
+}
+@media(min-width:768px){.testimonial-grid{grid-template-columns:repeat(3,1fr)}}
+.testimonial-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);padding:28px;
+}
+.testimonial-card .stars{color:#facc15;font-size:.9rem;margin-bottom:12px;letter-spacing:2px}
+.testimonial-card p{font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.65;margin-bottom:16px;font-style:italic}
+.testimonial-card .author{font-family:var(--font-head);font-weight:600;font-size:.85rem;color:var(--white)}
+.testimonial-card .author span{display:block;font-weight:400;font-size:.78rem;color:rgba(255,255,255,.5)}
+
+/* ============================================================
+   SERVICES — GROWTH LEVERS
+   ============================================================ */
+.services{padding:100px 0;background:var(--white)}
+.services-grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+.service-card{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  background:var(--off-white);border:1px solid #e2e8f0;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+  display:flex;flex-direction:column;
+}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.service-card-top{
+  padding:32px 28px 24px;
+  background:linear-gradient(135deg,var(--navy),#0e3057);color:var(--white);
+}
+.service-card-top .card-number{
+  font-family:var(--font-head);font-size:3rem;font-weight:800;
+  opacity:.15;position:absolute;top:16px;right:24px;
+}
+.service-card-top h3{font-size:1.2rem;margin-bottom:4px}
+.service-card-top .card-subtitle{
+  font-size:.82rem;color:rgba(255,255,255,.6);font-weight:500;
+}
+.service-card-body{
+  padding:24px 28px 28px;flex:1;display:flex;flex-direction:column;
+}
+.service-card-body p{font-size:.92rem;color:#64748b;line-height:1.65;margin-bottom:20px;flex:1}
+.service-card-body .btn{align-self:flex-start;font-size:.85rem;padding:10px 24px}
+
+/* ============================================================
+   HOW IT WORKS — BRIEF
+   ============================================================ */
+.how-it-works{
+  padding:140px 0 120px;
+  background:var(--off-white);
+  position:relative;
+}
+.how-grid{
+  display:grid;grid-template-columns:1fr;gap:32px;margin-bottom:48px;
+}
+@media(min-width:768px){.how-grid{grid-template-columns:repeat(3,1fr)}}
+.how-step{text-align:center;position:relative}
+.how-step-num{
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-head);font-weight:800;font-size:1.3rem;
+  margin:0 auto 20px;color:var(--white);
+}
+.how-step:nth-child(1) .how-step-num{background:var(--navy)}
+.how-step:nth-child(2) .how-step-num{background:var(--blue)}
+.how-step:nth-child(3) .how-step-num{background:var(--green)}
+.how-step h3{font-size:1.1rem;margin-bottom:8px;color:var(--navy)}
+.how-step p{font-size:.9rem;color:#64748b;max-width:320px;margin:0 auto}
+/* Connecting line between steps */
+@media(min-width:768px){
+  .how-step:not(:last-child)::after{
+    content:'';position:absolute;top:28px;right:-16px;
+    width:calc(100% - 56px);height:2px;
+    background:repeating-linear-gradient(90deg,var(--gray-light) 0,var(--gray-light) 6px,transparent 6px,transparent 12px);
+    left:calc(50% + 28px);
+  }
+}
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing{padding:100px 0;background:var(--white)}
+.pricing-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-bottom:48px}
+@media(min-width:768px){.pricing-grid{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+.price-card{
+  border-radius:var(--radius);overflow:hidden;
+  background:var(--white);border:1px solid #e2e8f0;
+  display:flex;flex-direction:column;
+  transition:transform .35s,box-shadow .35s;
+}
+.price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.price-card.popular{border:2px solid var(--blue);position:relative}
+.price-card.popular::before{
+  content:'Most Popular';position:absolute;top:0;right:24px;
+  background:var(--blue);color:var(--white);font-family:var(--font-head);
+  font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:6px 16px;border-radius:0 0 8px 8px;
+}
+/* Growth bar above card */
+.price-bar{
+  height:6px;background:var(--gray-light);
+}
+.price-card:nth-child(1) .price-bar{
+  background:linear-gradient(90deg,var(--blue) 33%,var(--gray-light) 33%);
+}
+.price-card:nth-child(2) .price-bar{
+  background:linear-gradient(90deg,var(--blue) 60%,var(--gray-light) 60%);
+}
+.price-card:nth-child(3) .price-bar{
+  background:linear-gradient(90deg,var(--green) 100%,var(--gray-light) 100%);
+}
+.price-card-body{padding:32px 28px;flex:1;display:flex;flex-direction:column}
+.price-card-body h3{font-size:1.15rem;margin-bottom:4px;color:var(--navy)}
+.price-card-body .price{
+  font-family:var(--font-head);font-size:2.4rem;font-weight:800;color:var(--navy);
+  margin:12px 0 4px;
+}
+.price-card-body .price span{font-size:1rem;font-weight:500;color:#94a3b8}
+.price-card-body .price-desc{font-size:.85rem;color:#94a3b8;margin-bottom:20px}
+.price-card-body ul{margin-bottom:24px;flex:1}
+.price-card-body ul li{
+  font-size:.88rem;color:var(--gray-dark);padding:5px 0 5px 24px;
+  position:relative;line-height:1.5;
+}
+.price-card-body ul li::before{
+  content:'';position:absolute;left:0;top:12px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--blue-20);
+}
+.price-card-body ul li::after{
+  content:'';position:absolute;left:4px;top:16px;
+  width:6px;height:3px;border-left:2px solid var(--blue);
+  border-bottom:2px solid var(--blue);transform:rotate(-45deg);
+}
+.price-card.popular ul li::before{background:var(--blue-20)}
+.price-projection{
+  background:var(--off-white);padding:16px 28px;
+  border-top:1px solid #e2e8f0;
+}
+.price-projection p{
+  font-size:.8rem;color:#64748b;font-weight:500;
+}
+.price-projection strong{color:var(--navy)}
+
+/* ============================================================
+   RESULTS
+   ============================================================ */
+.results{padding:100px 0;background:var(--off-white)}
+.results-grid{display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:768px){.results-grid{grid-template-columns:repeat(3,1fr)}}
+.result-card{
+  background:var(--white);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);transition:transform .35s,box-shadow .35s;
+}
+.result-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.result-card-header{
+  padding:24px 28px;
+  background:linear-gradient(135deg,var(--navy),#0e3057);
+  color:var(--white);
+}
+.result-card-header .industry-tag{
+  font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--green);font-weight:700;margin-bottom:8px;
+}
+.result-card-header h3{font-size:1.05rem;margin-bottom:2px}
+.result-card-header .domain{font-size:.82rem;color:rgba(255,255,255,.5)}
+.result-card-body{padding:24px 28px}
+.rank-change{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:.85rem;
+}
+.rank-change:last-of-type{border-bottom:none}
+.rank-change .keyword{color:#64748b;flex:1}
+.rank-change .positions{
+  display:flex;align-items:center;gap:8px;font-family:var(--font-head);font-weight:700;
+}
+.rank-change .old{color:#94a3b8;text-decoration:line-through}
+.rank-change .arrow{color:var(--green)}
+.rank-change .new{color:var(--green)}
+.traffic-boost{
+  margin-top:16px;padding:12px 16px;border-radius:var(--radius-sm);
+  background:rgba(34,197,94,.08);text-align:center;
+  font-family:var(--font-head);font-weight:700;color:var(--green);
+  font-size:1.1rem;
+}
+.results-note{
+  text-align:center;margin-top:48px;font-size:.92rem;color:#64748b;
+  font-weight:500;
+}
+
+/* ============================================================
+   SERVICE AREAS
+   ============================================================ */
+.service-areas{padding:72px 0;background:var(--white)}
+.areas-list{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:16px;
+}
+.area-tag{
+  padding:10px 24px;border-radius:50px;
+  background:var(--off-white);border:1px solid #e2e8f0;
+  font-family:var(--font-head);font-weight:600;font-size:.88rem;
+  color:var(--navy);transition:all .25s;
+}
+.area-tag:hover{background:var(--blue-10);border-color:var(--blue);color:var(--blue)}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about{
+  padding:140px 0 120px;
+  background:var(--off-white);
+  position:relative;
+}
+.about-inner{max-width:720px;margin:0 auto}
+.about-inner p{font-size:1.05rem;color:#475569;line-height:1.75;margin-bottom:20px}
+.about-inner p strong{color:var(--navy)}
+
+/* ============================================================
+   CONTACT / CTA
+   ============================================================ */
+.contact{padding:100px 0;background:var(--white)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr;gap:48px;align-items:start;
+}
+@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1fr}}
+.contact-text h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--navy);margin-bottom:16px;line-height:1.2}
+.contact-text p{color:#64748b;font-size:1rem;margin-bottom:28px}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.contact-info-item{
+  display:flex;align-items:center;gap:12px;font-size:.92rem;color:var(--gray-dark);
+}
+.contact-info-item .info-icon{
+  width:40px;height:40px;border-radius:50%;background:var(--blue-10);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--blue);font-size:1rem;flex-shrink:0;
+}
+.contact-form{
+  background:var(--off-white);border-radius:var(--radius);padding:36px;
+  border:1px solid #e2e8f0;
+}
+.form-group{margin-bottom:16px}
+.form-group label{
+  display:block;font-family:var(--font-head);font-weight:600;
+  font-size:.82rem;color:var(--navy);margin-bottom:6px;
+}
+.form-group input,.form-group textarea{
+  width:100%;padding:12px 16px;border:1px solid #e2e8f0;
+  border-radius:var(--radius-sm);font-family:var(--font-body);
+  font-size:.92rem;background:var(--white);color:var(--gray-dark);
+  transition:border-color .25s;
+}
+.form-group input:focus,.form-group textarea:focus{
+  outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-20);
+}
+.form-group textarea{resize:vertical;min-height:100px}
+.contact-form .btn{width:100%;justify-content:center;font-size:1rem;padding:16px 32px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  background:var(--navy);color:var(--white);padding:64px 0 32px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1fr;gap:40px;margin-bottom:48px;
+}
+@media(min-width:768px){.footer-grid{grid-template-columns:2fr 1fr 1fr 1fr}}
+.footer-brand .nav-logo{margin-bottom:16px}
+.footer-brand p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.6;max-width:320px}
+.footer h4{
+  font-size:.75rem;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-bottom:16px;
+}
+.footer-links a{
+  display:block;font-size:.88rem;color:rgba(255,255,255,.65);
+  padding:4px 0;transition:color .25s;
+}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:24px;
+  display:flex;flex-wrap:wrap;justify-content:space-between;
+  align-items:center;gap:16px;
+}
+.footer-bottom p{font-size:.82rem;color:rgba(255,255,255,.4)}
+.footer-tagline{
+  font-family:var(--font-head);font-weight:600;font-size:.85rem;
+  color:rgba(255,255,255,.55);
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="pwg-concept-2-growth-engine.html" class="nav-logo">
+      <span class="logo-mark">PW</span> PrecisionWebGroup
+    </a>
+    <ul class="nav-links">
+      <li><a href="pwg-concept-2-how-it-works.html">How It Works</a></li>
+      <li class="dropdown">
+        <span class="dropdown-toggle" tabindex="0">
+          <a href="#">Services</a>
+        </span>
+        <div class="dropdown-menu">
+          <a href="pwg-concept-2-seo-web-design.html">SEO Web Design</a>
+          <a href="pwg-concept-2-local-seo.html">Local SEO</a>
+          <a href="pwg-concept-2-content-production.html">Monthly Content</a>
+        </div>
+      </li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#about">About</a></li>
+      <li class="nav-cta"><a href="#contact" class="btn btn-primary">Start Growing</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="pwg-concept-2-how-it-works.html">How It Works</a>
+  <a href="pwg-concept-2-seo-web-design.html">SEO Web Design</a>
+  <a href="pwg-concept-2-local-seo.html">Local SEO</a>
+  <a href="pwg-concept-2-content-production.html">Monthly Content</a>
+  <a href="#results" class="mobile-close">Results</a>
+  <a href="#pricing" class="mobile-close">Pricing</a>
+  <a href="#about" class="mobile-close">About</a>
+  <a href="#contact" class="btn btn-primary mobile-close">Start Growing</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero grad-bg">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1>Calgary Businesses: It's Time to <span>Stop Being Invisible</span> on Google.</h1>
+        <p class="hero-sub">We build professional websites and grow your visibility on Google with ongoing SEO — so your rankings climb, your traffic compounds, and your phone rings.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-primary">Start Growing — It's Free to Begin</a>
+          <a href="pwg-concept-2-how-it-works.html" class="btn btn-ghost">See How It Works</a>
+        </div>
+      </div>
+      <div class="growth-timeline" id="growthTimeline">
+        <h3>Your Growth Trajectory</h3>
+        <div class="timeline-track">
+          <div class="milestone" data-delay="0" data-fill="14" data-count="4">
+            <div class="milestone-dot"></div>
+            <span class="milestone-label">Month 0</span>
+            <div class="milestone-bar"><div class="milestone-fill"></div></div>
+            <span class="milestone-num">0</span>
+          </div>
+          <div class="milestone" data-delay="300" data-fill="29" data-count="8">
+            <div class="milestone-dot"></div>
+            <span class="milestone-label">Month 2</span>
+            <div class="milestone-bar"><div class="milestone-fill"></div></div>
+            <span class="milestone-num">0</span>
+          </div>
+          <div class="milestone" data-delay="600" data-fill="71" data-count="20">
+            <div class="milestone-dot"></div>
+            <span class="milestone-label">Month 4</span>
+            <div class="milestone-bar"><div class="milestone-fill"></div></div>
+            <span class="milestone-num">0</span>
+          </div>
+          <div class="milestone green" data-delay="900" data-fill="100" data-count="28">
+            <div class="milestone-dot"></div>
+            <span class="milestone-label">Month 6</span>
+            <div class="milestone-bar"><div class="milestone-fill"></div></div>
+            <span class="milestone-num">0</span>
+          </div>
+        </div>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.35);margin-top:16px;text-align:center">Keywords ranking on Google Page 1</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GROWTH PHASES
+     ============================================================ -->
+<section class="phases">
+  <div class="container text-center">
+    <span class="section-tag reveal">The Growth Framework</span>
+    <h2 class="section-title reveal">Every Business Moves Through 3 Phases</h2>
+    <p class="section-sub reveal">Most businesses are stuck in Phase 1. We move you to Phase 3 — systematically.</p>
+    <div class="phases-grid reveal">
+      <div class="phase-card dimmed">
+        <div class="phase-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="14" cy="14" r="12" stroke-dasharray="4 4"/><line x1="14" y1="8" x2="14" y2="14"/><line x1="14" y1="18" x2="14" y2="18.5" stroke-width="3"/></svg>
+        </div>
+        <p class="phase-label">Phase 1</p>
+        <h3>Invisible</h3>
+        <p>No rankings, no traffic, no leads from search. Customers can't find you.</p>
+      </div>
+      <span class="phase-arrow">&#10230;</span>
+      <div class="phase-card highlighted">
+        <div class="phase-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="14" cy="14" r="12"/><polyline points="14,8 14,14 18,16"/></svg>
+        </div>
+        <p class="phase-label">Phase 2</p>
+        <h3>Found</h3>
+        <p>Ranking for long-tail keywords, organic traffic growing, leads starting to come in.</p>
+      </div>
+      <span class="phase-arrow">&#10230;</span>
+      <div class="phase-card green-hl">
+        <div class="phase-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="14" cy="14" r="12"/><polyline points="9,14 12,17 19,10"/></svg>
+        </div>
+        <p class="phase-label">Phase 3</p>
+        <h3>Dominant</h3>
+        <p>Page 1 for competitive keywords, compounding traffic, steady stream of inbound leads.</p>
+      </div>
+    </div>
+    <a href="#contact" class="btn btn-primary reveal">Begin Phase 1 — Get Your Free Audit</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOCIAL PROOF TICKER
+     ============================================================ -->
+<section class="ticker-section">
+  <div class="ticker-track" id="ticker">
+    <div class="ticker-item"><span class="tick-dot"></span>Clinic Accreditation Consultants — Page 1 for 8 Healthcare Keywords</div>
+    <div class="ticker-item"><span class="tick-dot"></span>Translate ACE — 420% Organic Traffic Increase</div>
+    <div class="ticker-item"><span class="tick-dot"></span>Salutaryx — Page 1 for 5 Digital Health Keywords</div>
+    <div class="ticker-item"><span class="tick-dot"></span>Immigration Translation Services — 12 New Clients/Month from SEO</div>
+    <div class="ticker-item"><span class="tick-dot"></span>Clinic Accreditation Consultants — Page 1 for 8 Healthcare Keywords</div>
+    <div class="ticker-item"><span class="tick-dot"></span>Translate ACE — 420% Organic Traffic Increase</div>
+    <div class="ticker-item"><span class="tick-dot"></span>Salutaryx — Page 1 for 5 Digital Health Keywords</div>
+    <div class="ticker-item"><span class="tick-dot"></span>Immigration Translation Services — 12 New Clients/Month from SEO</div>
+  </div>
+  <div class="container testimonials">
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Within three months, our clinic accreditation consulting business went from invisible to ranking on page 1 for eight different healthcare keywords. The phone hasn't stopped ringing."</p>
+        <div class="author">Clinic Accreditation Consultants<span>Healthcare Consulting &bull; Calgary</span></div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We saw a 420% increase in organic traffic. PrecisionWebGroup's keyword strategy brought in translation clients we never would have reached through ads alone."</p>
+        <div class="author">Translate ACE<span>Certified Translation Services &bull; Canada-wide</span></div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"PrecisionWebGroup positioned our digital health platform to rank for the exact terms surgical programs search for. We went from zero visibility to page 1 for post-surgical recovery keywords in under five months."</p>
+        <div class="author">Salutaryx<span>Digital Health &bull; salutaryx.com</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES — GROWTH LEVERS
+     ============================================================ -->
+<section class="services diag-top" style="padding-top:140px">
+  <div class="container text-center">
+    <span class="section-tag reveal">Three Growth Levers</span>
+    <h2 class="section-title reveal">The System That Gets You Found</h2>
+    <p class="section-sub reveal">Each component works together to build rankings, authority, and a pipeline of inbound leads.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <span class="card-number">01</span>
+          <h3>The Foundation</h3>
+          <span class="card-subtitle">SEO-First Web Design</span>
+        </div>
+        <div class="service-card-body">
+          <p>A custom website built from the ground up for search engines. Clean code, fast loading, mobile-first, and structured to rank — not just look good.</p>
+          <a href="pwg-concept-2-seo-web-design.html" class="btn btn-outline">Learn More &rarr;</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <span class="card-number">02</span>
+          <h3>The Engine</h3>
+          <span class="card-subtitle">Local SEO</span>
+        </div>
+        <div class="service-card-body">
+          <p>Dominate your local market. Google Business optimization, citation building, review strategy, and local keyword targeting to own your service area.</p>
+          <a href="pwg-concept-2-local-seo.html" class="btn btn-outline">Learn More &rarr;</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <span class="card-number">03</span>
+          <h3>The Accelerator</h3>
+          <span class="card-subtitle">Monthly Content</span>
+        </div>
+        <div class="service-card-body">
+          <p>SEO-optimized pages published every month targeting the keywords your customers search for. Each one builds topical authority and compounds your visibility over time.</p>
+          <a href="pwg-concept-2-content-production.html" class="btn btn-outline">Learn More &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS — BRIEF
+     ============================================================ -->
+<section class="how-it-works diag-top">
+  <div class="container text-center">
+    <span class="section-tag reveal">How It Works</span>
+    <h2 class="section-title reveal">Three Phases. One Clear Path to Page 1.</h2>
+    <p class="section-sub reveal">We handle everything — you just watch the rankings climb.</p>
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="how-step-num">1</div>
+        <h3>Foundation</h3>
+        <p>We audit your online presence, research your market, and build a custom SEO-first website designed to rank.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">2</div>
+        <h3>Build</h3>
+        <p>We launch your site, begin publishing keyword-targeted content, and optimize your Google Business presence.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">3</div>
+        <h3>Grow</h3>
+        <p>Monthly content compounds your authority. Rankings climb, traffic grows, and leads start flowing in consistently.</p>
+      </div>
+    </div>
+    <a href="pwg-concept-2-how-it-works.html" class="btn btn-navy reveal">See the Full Process &rarr;</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section class="pricing" id="pricing">
+  <div class="container text-center">
+    <span class="section-tag reveal">Plans & Pricing</span>
+    <h2 class="section-title reveal">Simple Plans. Real Results.</h2>
+    <p class="section-sub reveal">Start with a professional website, then add SEO to grow your visibility on Google. Local Calgary support included with every plan.</p>
+    <div class="pricing-grid">
+      <!-- Website Plan -->
+      <div class="price-card reveal">
+        <div class="price-bar"></div>
+        <div class="price-card-body">
+          <h3>Website Plan</h3>
+          <p class="price-desc">Professional website + ongoing maintenance</p>
+          <div class="price">$50<span>/mo</span></div>
+          <ul>
+            <li>Custom website (up to 5 pages)</li>
+            <li>Mobile responsive design</li>
+            <li>Basic branding integration</li>
+            <li>Contact form &amp; Google Maps</li>
+            <li>Secure hosting &amp; SSL certificate</li>
+            <li>Monthly software &amp; security updates</li>
+            <li>Uptime &amp; security monitoring</li>
+            <li>1 small website edit per month</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center">Get Started</a>
+        </div>
+        <div class="price-projection">
+          <p><strong>Includes:</strong> Professional website, hosting, maintenance &amp; ongoing support</p>
+        </div>
+      </div>
+      <!-- SEO Growth Plan -->
+      <div class="price-card popular reveal">
+        <div class="price-bar"></div>
+        <div class="price-card-body">
+          <h3>SEO Growth</h3>
+          <p class="price-desc">Get found on Google &amp; attract local customers</p>
+          <div class="price">$100<span>/mo</span></div>
+          <ul>
+            <li>Everything in Website Plan</li>
+            <li>Keyword research for your business</li>
+            <li>On-page SEO optimization</li>
+            <li>Meta title &amp; description optimization</li>
+            <li>Internal linking improvements</li>
+            <li>2 SEO-optimized pages per month</li>
+            <li>Google Business Profile optimization</li>
+            <li>Basic local SEO improvements</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center">Start Growing</a>
+        </div>
+        <div class="price-projection">
+          <p><strong>6-month projection:</strong> 10-15 keywords on page 1, growing organic traffic &amp; leads</p>
+        </div>
+      </div>
+      <!-- SEO Authority Plan -->
+      <div class="price-card reveal">
+        <div class="price-bar"></div>
+        <div class="price-card-body">
+          <h3>SEO Authority</h3>
+          <p class="price-desc">Faster growth with expanded content targeting</p>
+          <div class="price">$200<span>/mo</span></div>
+          <ul>
+            <li>Everything in SEO Growth</li>
+            <li>4 SEO-optimized pages per month</li>
+            <li>Expanded keyword targeting</li>
+            <li>Additional internal linking</li>
+            <li>Ongoing page optimization</li>
+            <li>Rank for more services &amp; locations</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center">Go Authority</a>
+        </div>
+        <div class="price-projection">
+          <p><strong>6-month projection:</strong> 25-30 keywords on page 1, 300%+ organic traffic growth</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESULTS
+     ============================================================ -->
+<section class="results" id="results">
+  <div class="container text-center">
+    <span class="section-tag reveal">Proven Results</span>
+    <h2 class="section-title reveal">Results Achieved Through PrecisionWebGroup SEO Strategy</h2>
+    <p class="section-sub reveal">Real businesses. Real rankings. Real growth.</p>
+    <div class="results-grid">
+      <!-- Clinic Accreditation Consultants -->
+      <div class="result-card reveal">
+        <div class="result-card-header">
+          <p class="industry-tag">Healthcare Consulting</p>
+          <h3>Clinic Accreditation Consultants</h3>
+          <p class="domain">clinicaccreditation.ca</p>
+        </div>
+        <div class="result-card-body">
+          <div class="rank-change">
+            <span class="keyword">"clinic accreditation Canada"</span>
+            <div class="positions">
+              <span class="old">#22</span>
+              <span class="arrow">&rarr;</span>
+              <span class="new">#3</span>
+            </div>
+          </div>
+          <div class="rank-change">
+            <span class="keyword">"diagnostic imaging accreditation"</span>
+            <div class="positions">
+              <span class="old">#18</span>
+              <span class="arrow">&rarr;</span>
+              <span class="new">#1</span>
+            </div>
+          </div>
+          <div class="traffic-boost">+380% Organic Traffic</div>
+        </div>
+      </div>
+      <!-- Translate ACE -->
+      <div class="result-card reveal">
+        <div class="result-card-header">
+          <p class="industry-tag">Translation Services</p>
+          <h3>Translate ACE</h3>
+          <p class="domain">translateace.ca</p>
+        </div>
+        <div class="result-card-body">
+          <div class="rank-change">
+            <span class="keyword">"certified translation services Canada"</span>
+            <div class="positions">
+              <span class="old">#25</span>
+              <span class="arrow">&rarr;</span>
+              <span class="new">#2</span>
+            </div>
+          </div>
+          <div class="rank-change">
+            <span class="keyword">"IRCC translation services"</span>
+            <div class="positions">
+              <span class="old">#19</span>
+              <span class="arrow">&rarr;</span>
+              <span class="new">#4</span>
+            </div>
+          </div>
+          <div class="traffic-boost">+420% Organic Traffic</div>
+        </div>
+      </div>
+      <!-- Salutaryx -->
+      <div class="result-card reveal">
+        <div class="result-card-header">
+          <p class="industry-tag">Digital Health</p>
+          <h3>Salutaryx</h3>
+          <p class="domain">salutaryx.com</p>
+        </div>
+        <div class="result-card-body">
+          <div class="rank-change">
+            <span class="keyword">"post surgical recovery monitoring"</span>
+            <div class="positions">
+              <span class="old">#34</span>
+              <span class="arrow">&rarr;</span>
+              <span class="new">#2</span>
+            </div>
+          </div>
+          <div class="rank-change">
+            <span class="keyword">"remote patient recovery platform"</span>
+            <div class="positions">
+              <span class="old">#28</span>
+              <span class="arrow">&rarr;</span>
+              <span class="new">#1</span>
+            </div>
+          </div>
+          <div class="traffic-boost">+380% Organic Traffic</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICE AREAS
+     ============================================================ -->
+<section class="service-areas">
+  <div class="container text-center">
+    <span class="section-tag reveal">Service Areas</span>
+    <h2 class="section-title reveal" style="margin-bottom:32px">Serving Businesses Across the Calgary Region</h2>
+    <div class="areas-list reveal">
+      <span class="area-tag">Calgary</span>
+      <span class="area-tag">Airdrie</span>
+      <span class="area-tag">Cochrane</span>
+      <span class="area-tag">Okotoks</span>
+      <span class="area-tag">Chestermere</span>
+      <span class="area-tag">Strathmore</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="about diag-top" id="about">
+  <div class="container text-center">
+    <span class="section-tag reveal">About Us</span>
+    <h2 class="section-title reveal">Built in Calgary. Built for Growth.</h2>
+    <div class="about-inner reveal">
+      <p><strong>PrecisionWebGroup</strong> exists because too many Calgary businesses have great services but zero visibility online. We saw business after business pouring money into ads, social media, or outdated websites — while their competitors quietly owned page 1 of Google.</p>
+      <p>We built a different model: <strong>SEO-first web design combined with ongoing content production</strong>. Every website we build is engineered to rank. Every page we publish targets a real keyword that real customers are searching for. The result is organic growth that compounds month after month.</p>
+      <p>We're local. We're accessible. And we measure success the same way you do — <strong>more calls, more leads, more revenue</strong>. If your business isn't being found on Google, we can fix that.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT / CTA
+     ============================================================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <span class="section-tag">Let's Talk</span>
+        <h2>Your Competitors Started Their SEO Last Month. You Can Start Yours Today.</h2>
+        <p>Send us a message and we'll put together a free growth audit for your business — no obligation, no pressure. Just a clear look at where you stand and what's possible.</p>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <span class="info-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="14" height="10" rx="2"/><polyline points="2,4 9,10 16,4"/></svg>
+            </span>
+            info@precisionwebgroup.com
+          </div>
+          <div class="contact-info-item">
+            <span class="info-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 2h8l1 5-3 3a11 11 0 01-4-4L4 3z"/><path d="M10 12l2 2c1 1 3 0 3-1v-2"/></svg>
+            </span>
+            (587) 581-6715
+          </div>
+          <div class="contact-info-item">
+            <span class="info-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 17s-7-5.4-7-10A7 7 0 0116 7c0 4.6-7 10-7 10z"/><circle cx="9" cy="7" r="2.5"/></svg>
+            </span>
+            Calgary, Alberta
+          </div>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Message Sent!';this.querySelector('.btn').style.background='#22C55E'">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john@yourbusiness.com" required>
+        </div>
+        <div class="form-group">
+          <label for="business">Business Name</label>
+          <input type="text" id="business" name="business" placeholder="Your Business Name">
+        </div>
+        <div class="form-group">
+          <label for="website">Website URL</label>
+          <input type="url" id="website" name="website" placeholder="https://yourbusiness.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your business and what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message &amp; Get Your Free Audit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="pwg-concept-2-growth-engine.html" class="nav-logo">
+          <span class="logo-mark">PW</span> PrecisionWebGroup
+        </a>
+        <p>Calgary's SEO-first web design agency. We build websites that rank and publish content that compounds — so your business gets found when it matters most.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <div class="footer-links">
+          <a href="pwg-concept-2-growth-engine.html">Home</a>
+          <a href="pwg-concept-2-how-it-works.html">How It Works</a>
+          <a href="#results">Results</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <div class="footer-links">
+          <a href="pwg-concept-2-seo-web-design.html">SEO Web Design</a>
+          <a href="pwg-concept-2-local-seo.html">Local SEO</a>
+          <a href="pwg-concept-2-content-production.html">Monthly Content</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-links">
+          <a href="mailto:info@precisionwebgroup.com">info@precisionwebgroup.com</a>
+          <a href="tel:+15875816715">(587) 581-6715</a>
+          <a>Calgary, Alberta</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 PrecisionWebGroup. All rights reserved.</p>
+      <span class="footer-tagline">From Invisible to Dominant — PrecisionWebGroup</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function(){
+  'use strict';
+
+  /* ---- NAV: scroll effect ---- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---- MOBILE MENU ---- */
+  const toggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-close').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ---- INTERSECTION OBSERVER: reveal on scroll ---- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  revealEls.forEach(el => revealObs.observe(el));
+
+  /* ---- GROWTH TIMELINE: animated milestones ---- */
+  const timeline = document.getElementById('growthTimeline');
+  let timelineAnimated = false;
+
+  function animateCountUp(el, target, duration){
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      el.textContent = Math.round(eased * target);
+      if(progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  function runTimelineAnimation(){
+    if(timelineAnimated) return;
+    timelineAnimated = true;
+    const milestones = timeline.querySelectorAll('.milestone');
+    milestones.forEach((ms, i) => {
+      const delay = parseInt(ms.dataset.delay) || 0;
+      const fillPct = parseInt(ms.dataset.fill) || 0;
+      const countTarget = parseInt(ms.dataset.count) || 0;
+      const fillBar = ms.querySelector('.milestone-fill');
+      const numEl = ms.querySelector('.milestone-num');
+      setTimeout(() => {
+        ms.classList.add('animated');
+        fillBar.style.width = fillPct + '%';
+        animateCountUp(numEl, countTarget, 1000);
+      }, 400 + delay);
+    });
+  }
+
+  const timelineObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        runTimelineAnimation();
+        timelineObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.3});
+  timelineObs.observe(timeline);
+
+  /* ---- RESULTS: count-up on traffic percentages ---- */
+  const trafficBoosts = document.querySelectorAll('.traffic-boost');
+  const trafficObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const text = el.textContent;
+        const match = text.match(/\+(\d+)%/);
+        if(match){
+          const target = parseInt(match[1]);
+          const start = performance.now();
+          const duration = 1400;
+          const update = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = '+' + Math.round(eased * target) + '% Organic Traffic';
+            if(progress < 1) requestAnimationFrame(update);
+          };
+          requestAnimationFrame(update);
+        }
+        trafficObs.unobserve(el);
+      }
+    });
+  }, {threshold:0.5});
+  trafficBoosts.forEach(el => trafficObs.observe(el));
+
+  /* ---- SMOOTH ANCHOR SCROLL (close mobile menu) ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e){
+      const id = this.getAttribute('href');
+      if(id === '#') return;
+      const target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({top, behavior:'smooth'});
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
